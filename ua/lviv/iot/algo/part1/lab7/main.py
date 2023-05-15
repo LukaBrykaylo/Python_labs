@@ -1,4 +1,4 @@
-from Printer import Printer
+from printer import Printer
 
 if __name__ == '__main__':
     printers = [Printer(), Printer("Modeled", "Inject", True, False, 200, 0),
