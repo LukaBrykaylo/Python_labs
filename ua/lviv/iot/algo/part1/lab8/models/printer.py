@@ -40,7 +40,7 @@ class Printer(ABC):
             self.paper_count = 0
 
     @abstractclassmethod
-    def loadPaper(self, count):
+    def load_paper(self, count):
         """
         loads the specified number of paper into tray
         """

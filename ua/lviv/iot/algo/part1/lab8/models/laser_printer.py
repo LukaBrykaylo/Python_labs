@@ -36,7 +36,7 @@ class LaserPrinter(Printer):
         else:
             self.paper_count = 0
 
-    def loadPaper(self, count):
+    def load_paper(self, count):
         """
         loads the specified number of paper into tray
         """
