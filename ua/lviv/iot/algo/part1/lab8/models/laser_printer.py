@@ -25,7 +25,7 @@ class LaserPrinter(Printer):
         self.printed_pages = printed_pages
 
     def __str__(self):
-        return super().__str__() + f"capacity_of_toner={self.capacity_of_toner}, printed_pages={self.printed_pages}"
+        return super().__str__() + f", capacity_of_toner={self.capacity_of_toner}, printed_pages={self.printed_pages})"
 
     def print(self, pages):
         """

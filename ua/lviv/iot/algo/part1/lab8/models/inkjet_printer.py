@@ -27,7 +27,7 @@ class InkjetPrinter(Printer):
         self.level_of_paints = level_of_paints
 
     def __str__(self):
-        return super().__str__() + f" is_CMYK={self.is_CMYK}, level_of_paints={self.level_of_paints}"
+        return super().__str__() + f", is_CMYK={self.is_CMYK}, level_of_paints={self.level_of_paints})"
 
     def print(self, pages):
         """

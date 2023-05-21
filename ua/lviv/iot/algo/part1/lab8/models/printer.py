@@ -27,7 +27,7 @@ class Printer(ABC):
     @abstractclassmethod
     def __str__(self):
         return f"Printer (model={self.model}, type={self.type}, is color={self.is_color},\
- is duplex={self.is_duplex}, paper tray capacity={self.paper_tray_capacity}, paper count={self.paper_count})"
+ is duplex={self.is_duplex}, paper tray capacity={self.paper_tray_capacity}, paper count={self.paper_count}"
 
     @abstractclassmethod
     def print(self, pages):

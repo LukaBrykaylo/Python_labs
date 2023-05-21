@@ -25,7 +25,7 @@ class MatrixPrinter(Printer):
         self.is_speed = is_speed
 
     def __str__(self):
-        return super().__str__() + f"number_of_pins={self.number_of_pins}, is_speed={self.is_speed}"
+        return super().__str__() + f", number_of_pins={self.number_of_pins}, is_speed={self.is_speed})"
 
     def print(self, pages):
         """

@@ -7,8 +7,8 @@ from models.sublimation_printer import SublimationPrinter
 if __name__ == '__main__':
     printers = [InkjetPrinter("Modeled", "Inkject", True, False, 200, 0, True, 2), 
                 LaserPrinter("Modeled", "Laser", True, True, 90, 6, 20, 0),
-                MatrixPrinter("Modeled", "Inkject", True, False, 200, 0, 8, True),
-                SublimationPrinter("Modeled", "Inkject", True, False, 200, 0, 20)]
+                MatrixPrinter("Modeled", "Matrix", True, False, 200, 0, 8, True),
+                SublimationPrinter("Modeled", "Sublimation", True, False, 200, 0, 20)]
 
     printer_manager = PrinterManager(printers)
 

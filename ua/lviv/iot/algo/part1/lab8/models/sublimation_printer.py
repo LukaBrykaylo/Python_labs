@@ -23,7 +23,7 @@ class SublimationPrinter(Printer):
         self.temperature = temperature
 
     def __str__(self):
-        return super().__str__() + f"temperature={self.temperature}"
+        return super().__str__() + f", temperature={self.temperature})"
 
     def print(self, pages):
         """
