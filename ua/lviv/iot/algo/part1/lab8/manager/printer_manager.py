@@ -6,10 +6,10 @@ class PrinterManager:
     Manager of Printers
     """
 
-    def __init__(self, printers: Printer = None):
+    def __init__(self, printers: list[Printer] = None):
         """
         field:
-            printers - list of Printers
+            :param: printers - list of Printers
         """
         self.printers = list(printers)
 
@@ -30,10 +30,10 @@ class PrinterManager:
         """
         returns all printers with paper count more than "number"
         """
-        return list(filter(lambda printer: printer.remaining_pages_count() > number, self.printers))
+        return filter(lambda printer: printer.remaining_pages_count() > number, self.printers)
 
     def find_all_with_paper_tray_capacity_more_than(self, number):
         """
         returns all printers with paper tray capacity more than "number" 
         """
-        return list(filter(lambda printer: printer.paper_tray_capacity > number, self.printers))
+        return filter(lambda printer: printer.paper_tray_capacity > number, self.printers)

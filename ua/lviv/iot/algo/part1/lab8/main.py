@@ -19,3 +19,4 @@ if __name__ == '__main__':
 
     for printer in printer_manager.find_all_with_paper_tray_capacity_more_than(100):
         print(printer)
+        

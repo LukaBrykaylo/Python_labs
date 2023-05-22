@@ -6,19 +6,19 @@ class SublimationPrinter(Printer):
     class SublimationPrinter
     """
 
-    def __init__(self, model="unmodeled", type="Sublimation", is_color=True, is_duplex=True,
+    def __init__(self, model="unmodeled", type_of="Sublimation", is_color=True, is_duplex=True,
                  paper_tray_capacity=200, paper_count=0, temperature=10):
         """
         field:
-           model - model of printer
-           type - type of printer(Ink, Laser...)
-           is_color - black/white or colorful
-           is_duplex - if printer duplex or not
-           paper_tray_capacity - max number of pages which can be put in printer
-           paper_count - number of pages loaded now
-           temperature - temperature of printer
+           :param: model - model of printer
+           :param: type_of - type of printer(Ink, Laser...)
+           :param: is_color - black/white or colorful
+           :param: is_duplex - if printer duplex or not
+           :param: paper_tray_capacity - max number of pages which can be put in printer
+           :param: paper_count - number of pages loaded now
+           :param: temperature - temperature of printer
         """
-        super().__init__(model=model, type=type, is_color=is_color, is_duplex=is_duplex,
+        super().__init__(model=model, type_of=type_of, is_color=is_color, is_duplex=is_duplex,
                          paper_tray_capacity=paper_tray_capacity, paper_count=paper_count)
         self.temperature = temperature
 

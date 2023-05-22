@@ -1,4 +1,4 @@
-from abc import ABC, abstractclassmethod
+from abc import ABC, abstractmethod
 
 
 class Printer(ABC):
@@ -6,30 +6,29 @@ class Printer(ABC):
     Abstract printer class
     """
 
-    @abstractclassmethod
-    def __init__(self, model="unmodeled", type="Laser", is_color=True, is_duplex=True, paper_tray_capacity=300, paper_count=0):
+    def __init__(self, model="unmodeled", type_of="Laser", is_color=True, is_duplex=True, paper_tray_capacity=300, paper_count=0):
         """
         field:
-           model - model of printer
-           type - type of printer(Ink, Laser...)
-           is_color - black/white or colorful
-           is_duplex - if printer duplex or not
-           paper_tray_capacity - max number of pages which can be put in printer
-           paper_count - number of pages loaded now
+           :param: model - model of printer
+           :param: type_of - type of printer(Ink, Laser...)
+           :param: is_color - black/white or colorful
+           :param: is_duplex - if printer duplex or not
+           :param: paper_tray_capacity - max number of pages which can be put in printer
+           :param: paper_count - number of pages loaded now
         """
         self.model = model
-        self.type = type
+        self.type_of = type_of
         self.is_color = is_color
         self.is_duplex = is_duplex
         self.paper_tray_capacity = paper_tray_capacity
         self.paper_count = paper_count
 
-    @abstractclassmethod
+    @abstractmethod
     def __str__(self):
-        return f"Printer (model={self.model}, type={self.type}, is color={self.is_color},\
+        return f"Printer (model={self.model}, type={self.type_of}, is color={self.is_color},\
  is duplex={self.is_duplex}, paper tray capacity={self.paper_tray_capacity}, paper count={self.paper_count}"
 
-    @abstractclassmethod
+    @abstractmethod
     def print(self, pages):
         """
         prints the specified number of pages
@@ -39,7 +38,7 @@ class Printer(ABC):
         else:
             self.paper_count = 0
 
-    @abstractclassmethod
+    @abstractmethod
     def load_paper(self, count):
         """
         loads the specified number of paper into tray
@@ -49,7 +48,7 @@ class Printer(ABC):
         else:
             self.paper_count = self.paper_tray_capacity
 
-    @abstractclassmethod
+    @abstractmethod
     def remaining_pages_count(self):
         """
         calculate remaining paper to print
