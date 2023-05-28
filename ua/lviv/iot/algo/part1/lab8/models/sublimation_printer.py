@@ -15,11 +15,13 @@ class SublimationPrinter(Printer):
            :param: is_color - black/white or colorful
            :param: is_duplex - if printer duplex or not
            :param: paper_tray_capacity - max number of pages which can be put in printer
+           :param: prefered_type_of_paper_set - set of prefered type of paper
            :param: paper_count - number of pages loaded now
            :param: temperature - temperature of printer
         """
         super().__init__(model=model, type_of=type_of, is_color=is_color, is_duplex=is_duplex,
-                         paper_tray_capacity=paper_tray_capacity, paper_count=paper_count)
+                         paper_tray_capacity=paper_tray_capacity, paper_count=paper_count,
+                         prefered_type_of_paper_set={"Sublimation paper", "Transfer paper"})
         self.temperature = temperature
 
     def __str__(self):

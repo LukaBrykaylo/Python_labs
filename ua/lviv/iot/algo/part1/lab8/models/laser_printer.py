@@ -16,11 +16,13 @@ class LaserPrinter(Printer):
            :param: is_duplex - if printer duplex or not
            :param: paper_tray_capacity - max number of pages which can be put in printer
            :param: paper_count - number of pages loaded now
+           :param: prefered_type_of_paper_set - set of prefered type of paper
            :param: capacity_of_toner - remaining capacity of toner
            :param: printed_pages - how much paper printer already spent
         """
         super().__init__(model=model, type_of=type_of, is_color=is_color, is_duplex=is_duplex,
-                         paper_tray_capacity=paper_tray_capacity, paper_count=paper_count)
+                         paper_tray_capacity=paper_tray_capacity, paper_count=paper_count, 
+                         prefered_type_of_paper_set={"Laser paper", "Plain Office paper"})
         self.capacity_of_toner = capacity_of_toner
         self.printed_pages = printed_pages
 

@@ -18,11 +18,13 @@ class InkjetPrinter(Printer):
            :param: is_duplex - if printer duplex or not
            :param: paper_tray_capacity - max number of pages which can be put in printer
            :param: paper_count - number of pages loaded now
+           :param: prefered_type_of_paper_set - set of prefered type of paper
            :param: is_CMYK - if printer CMYK or not
            :param: level_of_paints - remaining level of paints
         """
         super().__init__(model=model, type_of=type_of, is_color=is_color, is_duplex=is_duplex,
-                         paper_tray_capacity=paper_tray_capacity, paper_count=paper_count)
+                         paper_tray_capacity=paper_tray_capacity, paper_count=paper_count, 
+                         prefered_type_of_paper_set={"Glossy paper", "Semi-gloss paper"})
         self.is_CMYK = is_CMYK
         self.level_of_paints = level_of_paints
 
