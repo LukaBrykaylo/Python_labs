@@ -16,11 +16,13 @@ class MatrixPrinter(Printer):
            :param: is_duplex - if printer duplex or not
            :param: paper_tray_capacity - max number of pages which can be put in printer
            :param: paper_count - number of pages loaded now
+           :param: prefered_type_of_paper_set - set of prefered type of paper
            :param: number_of_pins - number of printer's pins
            :param: is_speed - if printer speed or not
         """
         super().__init__(model=model, type_of=type_of, is_color=is_color, is_duplex=is_duplex,
-                         paper_tray_capacity=paper_tray_capacity, paper_count=paper_count)
+                         paper_tray_capacity=paper_tray_capacity, paper_count=paper_count,
+                         prefered_type_of_paper_set={"Continuous form paper", "Plain Listing paper"})
         self.number_of_pins = number_of_pins
         self.is_speed = is_speed
 

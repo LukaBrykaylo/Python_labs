@@ -6,7 +6,7 @@ class Printer(ABC):
     Abstract printer class
     """
 
-    def __init__(self, model="unmodeled", type_of="Laser", is_color=True, is_duplex=True, paper_tray_capacity=300, paper_count=0):
+    def __init__(self, model="unmodeled", type_of="Laser", is_color=True, is_duplex=True, paper_tray_capacity=300, paper_count=0, prefered_type_of_paper_set ={}):
         """
         field:
            :param: model - model of printer
@@ -15,6 +15,7 @@ class Printer(ABC):
            :param: is_duplex - if printer duplex or not
            :param: paper_tray_capacity - max number of pages which can be put in printer
            :param: paper_count - number of pages loaded now
+           :param: prefered_type_of_paper_set - set of prefered type of paper
         """
         self.model = model
         self.type_of = type_of
@@ -22,6 +23,7 @@ class Printer(ABC):
         self.is_duplex = is_duplex
         self.paper_tray_capacity = paper_tray_capacity
         self.paper_count = paper_count
+        self.prefered_type_of_paper_set = prefered_type_of_paper_set
 
     @abstractmethod
     def __str__(self):
@@ -37,6 +39,9 @@ class Printer(ABC):
             self.paper_count -= pages
         else:
             self.paper_count = 0
+
+    def __iter__(self):
+        return iter(self.prefered_type_of_paper_set)
 
     @abstractmethod
     def load_paper(self, count):
@@ -54,3 +59,11 @@ class Printer(ABC):
         calculate remaining paper to print
         """
         return self.paper_count
+
+    def get_attributes_in_type(self, data_type):
+        """
+        return all attributes which same as "data_type"
+
+        :param: data_type - type to compare
+        """
+        return {key: value for key, value in self.__dict__.items() if isinstance(value, data_type)}
