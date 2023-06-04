@@ -1,3 +1,6 @@
+from exceptions.paper_error import PaperError
+from exceptions.overload_paper_error import OverloadError
+from exceptions.logger import loggering
 from .printer import Printer
 
 
@@ -29,15 +32,17 @@ class LaserPrinter(Printer):
     def __str__(self):
         return super().__str__() + f", capacity_of_toner={self.capacity_of_toner}, printed_pages={self.printed_pages})"
 
+    @loggering(PaperError, "console")
     def print(self, pages):
         """
         prints the specified number of pages
         """
-        if (self.paper_count - pages) >= 0:
+        if self.paper_count >= pages:
             self.paper_count -= pages
         else:
-            self.paper_count = 0
+            raise PaperError(pages, self.paper_count, "laz")
 
+    @loggering(OverloadError, "console")
     def load_paper(self, count):
         """
         loads the specified number of paper into tray
@@ -45,7 +50,7 @@ class LaserPrinter(Printer):
         if (self.paper_count + count) <= self.paper_tray_capacity:
             self.paper_count += count
         else:
-            self.paper_count = self.paper_tray_capacity
+            raise OverloadError(count, self.paper_tray_capacity - self.paper_count, "laz")
 
     def remaining_pages_count(self):
         """

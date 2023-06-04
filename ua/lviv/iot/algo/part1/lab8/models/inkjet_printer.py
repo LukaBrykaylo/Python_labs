@@ -1,4 +1,8 @@
+from exceptions.paper_error import PaperError
+from exceptions.overload_paper_error import OverloadError
+from exceptions.logger import loggering
 from .printer import Printer
+
 
 
 class InkjetPrinter(Printer):
@@ -23,7 +27,7 @@ class InkjetPrinter(Printer):
            :param: level_of_paints - remaining level of paints
         """
         super().__init__(model=model, type_of=type_of, is_color=is_color, is_duplex=is_duplex,
-                         paper_tray_capacity=paper_tray_capacity, paper_count=paper_count, 
+                         paper_tray_capacity=paper_tray_capacity, paper_count=paper_count,
                          prefered_type_of_paper_set={"Glossy paper", "Semi-gloss paper"})
         self.is_CMYK = is_CMYK
         self.level_of_paints = level_of_paints
@@ -31,15 +35,17 @@ class InkjetPrinter(Printer):
     def __str__(self):
         return super().__str__() + f", is_CMYK={self.is_CMYK}, level_of_paints={self.level_of_paints})"
 
+    @loggering(PaperError, "file")
     def print(self, pages):
         """
         prints the specified number of pages
         """
-        if (self.paper_count - pages) >= 0:
+        if self.paper_count >= pages:
             self.paper_count -= pages
         else:
-            self.paper_count = 0
+            raise PaperError(pages, self.paper_count, "Ink")
 
+    @loggering(OverloadError, "file")
     def load_paper(self, count):
         """
         loads the specified number of paper into tray
@@ -47,7 +53,7 @@ class InkjetPrinter(Printer):
         if (self.paper_count + count) <= self.paper_tray_capacity:
             self.paper_count += count
         else:
-            self.paper_count = self.paper_tray_capacity
+            raise OverloadError(count, self.paper_tray_capacity - self.paper_count, "Ink")
 
     def remaining_pages_count(self):
         """
