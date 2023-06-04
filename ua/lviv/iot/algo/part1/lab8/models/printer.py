@@ -60,4 +60,4 @@ class Printer(ABC):
 
         :param: data_type - type to compare
         """
-        pass
+        return {key: value for key, value in self.__dict__.items() if isinstance(value, data_type)}
