@@ -1,7 +1,7 @@
+import copy
 from decorators.using_time_file import using_time_file
 from decorators.result_of_method_file import result_of_method_file
 from models.printer import Printer
-import copy
 
 
 class PrinterManager:
@@ -41,6 +41,15 @@ class PrinterManager:
         :param: count - amount of paper to load
         """
         [x.load_paper(count) for x in self.printers]
+        return self.printers
+
+    def print_with_all_printers(self, pages):
+        """
+        Print something from all printers
+
+        :param: pages - amount of paper to print
+        """
+        [x.print(pages) for x in self.printers]
         return self.printers
 
     @result_of_method_file

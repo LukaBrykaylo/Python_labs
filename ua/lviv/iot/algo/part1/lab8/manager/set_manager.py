@@ -1,16 +1,15 @@
 from .printer_manager import PrinterManager
-from models.printer import Printer
 
 
 class SetManager:
     """
     set manager of printers
     """
-    def __init__(self, printers: list[Printer] = None):
+    def __init__(self, printer_manager: PrinterManager = None):
         """
         :param: printers - list of Printers
         """
-        self.printer_manager = PrinterManager(printers)
+        self.printer_manager = PrinterManager(printer_manager)
 
     def __iter__(self):
         """

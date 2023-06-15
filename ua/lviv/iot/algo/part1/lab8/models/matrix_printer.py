@@ -1,3 +1,6 @@
+from exceptions.paper_error import PaperError
+from exceptions.overload_paper_error import OverloadError
+from exceptions.logger import loggering
 from .printer import Printer
 
 
@@ -28,16 +31,18 @@ class MatrixPrinter(Printer):
 
     def __str__(self):
         return super().__str__() + f", number_of_pins={self.number_of_pins}, is_speed={self.is_speed})"
-
+  
+    @loggering(PaperError, "file")
     def print(self, pages):
         """
         prints the specified number of pages
         """
-        if (self.paper_count - pages) >= 0:
+        if self.paper_count >= pages:
             self.paper_count -= pages
         else:
-            self.paper_count = 0
+            raise PaperError(pages, self.paper_count, "Mat")
 
+    @loggering(OverloadError, "file")
     def load_paper(self, count):
         """
         loads the specified number of paper into tray
@@ -45,7 +50,7 @@ class MatrixPrinter(Printer):
         if (self.paper_count + count) <= self.paper_tray_capacity:
             self.paper_count += count
         else:
-            self.paper_count = self.paper_tray_capacity
+            raise OverloadError(count, self.paper_tray_capacity - self.paper_count, "Mat")
 
     def remaining_pages_count(self):
         """

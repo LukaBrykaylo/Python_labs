@@ -6,7 +6,7 @@ class Printer(ABC):
     Abstract printer class
     """
 
-    def __init__(self, model="unmodeled", type_of="Laser", is_color=True, is_duplex=True, paper_tray_capacity=300, paper_count=0, prefered_type_of_paper_set ={}):
+    def __init__(self, model="unmodeled", type_of="Laser", is_color=True, is_duplex=True, paper_tray_capacity=300, paper_count=0, prefered_type_of_paper_set={}):
         """
         field:
            :param: model - model of printer
@@ -35,10 +35,7 @@ class Printer(ABC):
         """
         prints the specified number of pages
         """
-        if (self.paper_count - pages) >= 0:
-            self.paper_count -= pages
-        else:
-            self.paper_count = 0
+        pass
 
     def __iter__(self):
         return iter(self.prefered_type_of_paper_set)
@@ -48,17 +45,14 @@ class Printer(ABC):
         """
         loads the specified number of paper into tray
         """
-        if (self.paper_count + count) <= self.paper_tray_capacity:
-            self.paper_count += count
-        else:
-            self.paper_count = self.paper_tray_capacity
+        pass
 
     @abstractmethod
     def remaining_pages_count(self):
         """
         calculate remaining paper to print
         """
-        return self.paper_count
+        pass
 
     def get_attributes_in_type(self, data_type):
         """
